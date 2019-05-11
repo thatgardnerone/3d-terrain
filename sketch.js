@@ -44,7 +44,7 @@ function draw() {
   noFill();
 
   // --- Camera --- //
-  rotateX(radians(76 dw));
+  rotateX(radians(76));
   translate(-w / 2, -h * 1.2, 110);
 
   for (let y = 0; y < rows - 1; y++) {
