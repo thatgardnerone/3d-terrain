@@ -45,7 +45,8 @@ function draw() {
 
   // --- Camera --- //
   rotateX(radians(76));
-  translate(-w / 2, -h * 1.2, 110);
+  rotateZ(radians(-lookHorizontal));
+  translate(-w / 2, -h * 1.2, 10);
 
   for (let y = 0; y < rows - 1; y++) {
     beginShape(TRIANGLE_STRIP);
@@ -59,9 +60,10 @@ function draw() {
 
   // --- Controls --- //
   // Look up and down
-  lookHorizontal = map(pwinMouseX, -windowWidth / 2, windowWidth / 2, 180, -180);
-  lookVertical = map(pwinMouseY, -windowHeight / 2, windowHeight / 2, 90, 50);
-
+  if (mouseIsPressed) {
+    lookHorizontal = map(pwinMouseX, -windowWidth / 2, windowWidth / 2, 180, -180);
+    lookVertical = map(pwinMouseY, -windowHeight / 2, windowHeight / 2, 90, 50);
+  }
   // strafe left and right
   if (keyIsDown(37) || keyIsDown(65)) {
     xspeed -= 0.1;
@@ -70,9 +72,9 @@ function draw() {
   }
 
   // forward and backward
-  // if (keyIsDown(38) || keyIsDown(87)) {
-  yspeed -= 0.1;
-  // } else if (keyIsDown(40) || keyIsDown(83)) {
-  // yspeed += 0.1;
-  // }
+  if (keyIsDown(38) || keyIsDown(87)) {
+    yspeed -= 0.1;
+  } else if (keyIsDown(40) || keyIsDown(83)) {
+    yspeed += 0.1;
+  }
 }
